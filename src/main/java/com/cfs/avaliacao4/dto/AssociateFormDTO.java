@@ -22,7 +22,6 @@ public class AssociateFormDTO {
 	private LocalDate birthDate;
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
-//	@NotBlank(message = "Campo data Obrigatório")
 	private Long politicalPartyId;
 
 }

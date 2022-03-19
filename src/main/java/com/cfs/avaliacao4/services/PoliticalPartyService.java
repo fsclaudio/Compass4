@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.cfs.avaliacao4.dto.PoliticalPartyDTO;
 import com.cfs.avaliacao4.dto.PoliticalPartyFormDTO;
+import com.cfs.avaliacao4.dto.PoliticalPartyFullDTO;
 import com.cfs.avaliacao4.entity.enums.Ideology;
 
 public interface PoliticalPartyService {
@@ -19,6 +20,8 @@ public interface PoliticalPartyService {
 	PoliticalPartyDTO updatePoliticalParty(Integer id, PoliticalPartyFormDTO body);
 	
 	PoliticalPartyDTO findById(Integer id);
+	
+	PoliticalPartyFullDTO findByIdAssociate(Integer id);
 	
 	ResponseEntity<List<PoliticalPartyDTO>> findByIdeology(Ideology ideology);
 	

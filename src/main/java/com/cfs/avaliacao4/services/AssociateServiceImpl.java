@@ -16,10 +16,13 @@ import org.springframework.stereotype.Service;
 
 import com.cfs.avaliacao4.dto.AssociateDTO;
 import com.cfs.avaliacao4.dto.AssociateFormDTO;
+import com.cfs.avaliacao4.dto.AssociatePartyFormDTO;
 import com.cfs.avaliacao4.entity.Associate;
+import com.cfs.avaliacao4.entity.PoliticalParty;
 import com.cfs.avaliacao4.entity.enums.Office;
 import com.cfs.avaliacao4.exceptions.ResourceNotFoundException;
 import com.cfs.avaliacao4.repository.AssociateRepository;
+import com.cfs.avaliacao4.repository.PoliticalPartyRepository;
 import com.cfs.avaliacao4.utils.Utilities;
 
 @Service
@@ -32,9 +35,16 @@ public class AssociateServiceImpl implements AssociateService {
 	private AssociateRepository repository;
 	
 	@Autowired
+	private PoliticalPartyRepository partyRepository;
+	
+	
+	@Autowired
 	private ModelMapper mapper;
 
 	private Associate associate;
+	
+	private PoliticalParty politicalParty;
+	
 	@Override
 	public AssociateDTO save(AssociateFormDTO body) {
 		LocalDate data = body.getBirthDate();
@@ -61,6 +71,7 @@ public class AssociateServiceImpl implements AssociateService {
 			throw new ResourceNotFoundException("Data de Nascimento não pode ser futura");
 		}
 		Optional<Associate> party = repository.findById(id);
+		associate = party.orElseThrow(() -> new ResourceNotFoundException("Id not found " + id));
 		party.get().setName(body.getName());
 		party.get().setOffice(body.getOffice());
 		party.get().setBirthDate(body.getBirthDate());
@@ -88,6 +99,33 @@ public class AssociateServiceImpl implements AssociateService {
 		associate = state.orElseThrow(() -> new ResourceNotFoundException("Id not found " + id));
 		repository.delete(state.get());
 		
+	}
+
+
+	@Override
+	public AssociateDTO updateAssociateParty(AssociatePartyFormDTO form) {
+	
+		PoliticalParty partido = partyRepository.findById(form.getIdPartido())
+				.orElseThrow(()-> new ResourceNotFoundException("Not Found Party"));
+		Optional<Associate> entity = repository.findById(form.getIdAssociado());
+		associate = entity.orElseThrow(()-> new ResourceNotFoundException("Not Found Associate"));
+		
+		entity.get().setPoliticalParty(partido);
+		System.out.println(entity.get().getPoliticalParty().getId());
+		return mapper.map(repository.save(entity.get()),AssociateDTO.class);
+	}
+
+
+	@Override
+	public void deleteAssociateParty(Integer idPartido, Integer idAssociate) {
+		Associate associate = repository.findById(idAssociate)
+				.orElseThrow(()-> new ResourceNotFoundException("Associado não enconctrado " + idAssociate));
+		PoliticalParty party = partyRepository.findById(idPartido)
+				.orElseThrow(()-> new ResourceNotFoundException("Partido não enconctrado " + idPartido));
+		
+		associate.setPoliticalParty(null);
+		
+		associate= repository.save(associate);
 	}
 
 }

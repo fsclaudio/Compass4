@@ -7,7 +7,10 @@ import java.util.List;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+import com.cfs.avaliacao4.entity.Associate;
 import com.cfs.avaliacao4.entity.enums.Ideology;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 import lombok.Data;
 
@@ -19,7 +22,8 @@ public class PoliticalPartyFullDTO {
 	private String acronym;
 	@Enumerated(EnumType.STRING)
 	private Ideology ideology;
+	@JsonFormat(shape = Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate fundationDate;
 	
-	private List<AssociateDTO> associacoes = new ArrayList<>();
+	private List<Associate> associates = new ArrayList<>();
 }

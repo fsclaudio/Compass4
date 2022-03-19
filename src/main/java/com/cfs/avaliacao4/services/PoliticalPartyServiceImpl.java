@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.cfs.avaliacao4.dto.PoliticalPartyDTO;
 import com.cfs.avaliacao4.dto.PoliticalPartyFormDTO;
+import com.cfs.avaliacao4.dto.PoliticalPartyFullDTO;
 import com.cfs.avaliacao4.entity.PoliticalParty;
 import com.cfs.avaliacao4.entity.enums.Ideology;
 import com.cfs.avaliacao4.exceptions.ResourceNotFoundException;
@@ -85,6 +86,14 @@ public class PoliticalPartyServiceImpl implements PoliticalPartyService {
 		party = state.orElseThrow(() -> new ResourceNotFoundException("Id not found " + id));
 		repository.delete(state.get());
 		
+	}
+
+
+	@Override
+	public PoliticalPartyFullDTO findByIdAssociate(Integer id) {
+		Optional<PoliticalParty> state = repository.findById(id);
+		party = state.orElseThrow(() -> new ResourceNotFoundException("Id not found " + id));
+		return mapper.map(state.get(), PoliticalPartyFullDTO.class);
 	}
 
 }

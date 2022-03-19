@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cfs.avaliacao4.dto.PoliticalPartyDTO;
 import com.cfs.avaliacao4.dto.PoliticalPartyFormDTO;
+import com.cfs.avaliacao4.dto.PoliticalPartyFullDTO;
 import com.cfs.avaliacao4.entity.enums.Ideology;
 import com.cfs.avaliacao4.services.PoliticalPartyService;
 
@@ -50,6 +51,13 @@ public class PolicalPartyController {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<PoliticalPartyDTO> findById(@PathVariable Integer id) {
 		PoliticalPartyDTO dto = service.findById(id);
+
+		return ResponseEntity.ok().body(dto);
+	}
+	
+	@GetMapping(value = "/{id}/associados")
+	public ResponseEntity<PoliticalPartyFullDTO> findByIdAssociado(@PathVariable Integer id) {
+		PoliticalPartyFullDTO dto = service.findByIdAssociate(id);
 
 		return ResponseEntity.ok().body(dto);
 	}

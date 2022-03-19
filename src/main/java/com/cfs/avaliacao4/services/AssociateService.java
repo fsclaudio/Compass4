@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.cfs.avaliacao4.dto.AssociateDTO;
 import com.cfs.avaliacao4.dto.AssociateFormDTO;
+import com.cfs.avaliacao4.dto.AssociatePartyFormDTO;
 import com.cfs.avaliacao4.entity.enums.Office;
 
 public interface AssociateService {
@@ -18,10 +19,14 @@ public interface AssociateService {
 	
 	AssociateDTO updateAssociate(Integer id, AssociateFormDTO body);
 	
+	AssociateDTO updateAssociateParty(AssociatePartyFormDTO form);
+	
 	AssociateDTO findById(Integer id);
 
 	
 	ResponseEntity<List<AssociateDTO>> findByOffice(Office office);
 	
 	void deleteAssociate(Integer id);
+	
+	void deleteAssociateParty(Integer partyId, Integer associateID );
 }

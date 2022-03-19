@@ -13,4 +13,5 @@ public interface PoliticalPartyRepository extends JpaRepository<PoliticalParty, 
 
 	@Query("SELECT DISTINCT obj FROM PoliticalParty obj  " + " WHERE  obj.ideology in(:ideology)  ")
 	List<PoliticalParty> findByIdeologyEguals(Ideology ideology);
+	
 }
