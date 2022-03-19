@@ -1,8 +1,7 @@
 package com.cfs.avaliacao4.dto;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
-import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
@@ -13,7 +12,7 @@ import com.cfs.avaliacao4.entity.enums.Ideology;
 import lombok.Data;
 
 @Data
-public class PartiesFormDTO {
+public class PoliticalPartyFormDTO {
 	
 	@Size(min = 4, max = 150, message = "O nome deve conter de 5 a 150 caracteres")
 	@NotBlank(message = "Campo Obrigatório")
@@ -23,8 +22,7 @@ public class PartiesFormDTO {
 	private String acronym;
 	@Enumerated(EnumType.STRING)
 	private Ideology ideology;
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	@NotBlank(message = "Campo Obrigatório")
-	private Instant fundationDate;
+	private LocalDate fundationDate;
+	
 
 }

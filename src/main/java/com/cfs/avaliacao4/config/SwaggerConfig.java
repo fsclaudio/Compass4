@@ -18,7 +18,7 @@ public class SwaggerConfig {
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.br.cfs.sprint4"))
+				.apis(RequestHandlerSelectors.basePackage("com.cfs.avaliacao4"))
 				.paths(PathSelectors.ant("/**"))
 				.build()
 				.apiInfo(appInfo());
