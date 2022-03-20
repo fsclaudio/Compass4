@@ -91,9 +91,8 @@ public class PoliticalPartyServiceImpl implements PoliticalPartyService {
 
 	@Override
 	public PoliticalPartyFullDTO findByIdAssociate(Integer id) {
-		Optional<PoliticalParty> state = repository.findById(id);
-		party = state.orElseThrow(() -> new ResourceNotFoundException("Id not found " + id));
-		return mapper.map(state.get(), PoliticalPartyFullDTO.class);
+		PoliticalParty state = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Id not found " + id));
+		return mapper.map(state, PoliticalPartyFullDTO.class);
 	}
 
 }

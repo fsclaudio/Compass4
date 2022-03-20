@@ -39,7 +39,7 @@ public class PoliticalParty implements Serializable {
 	private Ideology ideology;
 	private LocalDate fundationDate;
 	
-	@OneToMany(mappedBy = "politicalParty", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "politicalParty")
 	@JsonIgnore
 	private List<Associate> associates = new ArrayList<>();
 	
