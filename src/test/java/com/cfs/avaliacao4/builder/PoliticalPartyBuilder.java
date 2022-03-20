@@ -9,14 +9,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 
-import com.cfs.avaliacao4.dto.AssociateDTO;
 import com.cfs.avaliacao4.dto.PoliticalPartyDTO;
 import com.cfs.avaliacao4.dto.PoliticalPartyFormDTO;
-import com.cfs.avaliacao4.entity.Associate;
 import com.cfs.avaliacao4.entity.PoliticalParty;
 import com.cfs.avaliacao4.entity.enums.Ideology;
-import com.cfs.avaliacao4.entity.enums.Office;
-import com.cfs.avaliacao4.entity.enums.Sexo;
 
 public class PoliticalPartyBuilder {
 

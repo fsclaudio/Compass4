@@ -17,7 +17,6 @@ import lombok.Data;
 @Data
 public class PoliticalPartyFullDTO {
 
-	@NotNull
 	private Integer id;
 	@NotNull
 	private String name;

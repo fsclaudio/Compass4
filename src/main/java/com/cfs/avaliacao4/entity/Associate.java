@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +15,7 @@ import javax.persistence.ManyToOne;
 
 import com.cfs.avaliacao4.entity.enums.Office;
 import com.cfs.avaliacao4.entity.enums.Sexo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,7 +41,8 @@ public class Associate implements Serializable {
 	private Sexo sexo;
 	
 	@ManyToOne
-	@JoinColumn(name = "politicalParty_id")
+	@JsonIgnore
+	@JoinColumn(name = "politicalParty_id" )
 	private PoliticalParty politicalParty;
 
 }
