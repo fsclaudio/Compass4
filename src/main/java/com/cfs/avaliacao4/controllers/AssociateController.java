@@ -73,7 +73,7 @@ public class AssociateController {
 	}
 	
 	@PutMapping(value = "/partidos")
-	public ResponseEntity<AssociateDTO> saveAssociate(@RequestBody AssociatePartyFormDTO body){
+	public ResponseEntity<AssociateDTO> saveAssociate(@RequestBody @Valid AssociatePartyFormDTO body){
   
 		AssociateDTO state = service.updateAssociateParty(body);	
 		return ResponseEntity.ok(state);
@@ -96,10 +96,10 @@ public class AssociateController {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@DeleteMapping(value = "/{idA}/partidos/{idP}")
-	public ResponseEntity<Void> deleteAssociateForParty(@PathVariable Integer idA, @PathVariable Integer idP) {
+	@DeleteMapping(value = "/{associateId}/partidos/{partyId}")
+	public ResponseEntity<Void> deleteAssociateForParty(@PathVariable Integer associateId, @PathVariable Integer partyId) {
 		
-		service.deleteAssociateParty(idP, idA);
+		service.deleteAssociateParty(partyId, associateId);
 
 		return ResponseEntity.noContent().build();
 	}
