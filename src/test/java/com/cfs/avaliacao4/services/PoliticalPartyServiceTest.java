@@ -126,7 +126,7 @@ class PoliticalPartyServiceTest {
 	}
 
 	@Test
-	@DisplayName("delte politicalParty not found")
+	@DisplayName("delete politicalParty not found")
 	public void deleteAssociateNotFound() {
 		PoliticalParty party = PoliticalPartyBuilder.getParty();
 

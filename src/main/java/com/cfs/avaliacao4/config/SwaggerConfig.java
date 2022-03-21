@@ -27,7 +27,7 @@ public class SwaggerConfig {
 	private ApiInfo appInfo() {
 		return new ApiInfoBuilder()
 				.title("Compass Rest Api")
-				.description("Sprint3 Api Exemplo")
+				.description("Sprint4 Api TESTE")
 				.version("1.0.0")
 				.license("Apache Licence Version 3.0")
 				.contact(new Contact("Cláudio","https://github.com/fsclaudio/fsclaudio",""))

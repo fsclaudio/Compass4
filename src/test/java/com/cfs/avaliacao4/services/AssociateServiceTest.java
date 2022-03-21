@@ -19,9 +19,12 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.cfs.avaliacao4.builder.AssociateBuilder;
+import com.cfs.avaliacao4.builder.PoliticalPartyBuilder;
 import com.cfs.avaliacao4.dto.AssociateDTO;
 import com.cfs.avaliacao4.dto.AssociateFormDTO;
+import com.cfs.avaliacao4.dto.AssociatePartyFormDTO;
 import com.cfs.avaliacao4.entity.Associate;
+import com.cfs.avaliacao4.entity.PoliticalParty;
 import com.cfs.avaliacao4.exceptions.ResourceNotFoundException;
 import com.cfs.avaliacao4.repository.AssociateRepository;
 
@@ -131,5 +134,4 @@ class AssociateServiceTest {
 		assertThatExceptionOfType(ResourceNotFoundException.class)
 				.isThrownBy(() -> this.service.deleteAssociate(associate.getId()));
 	}
-
 }

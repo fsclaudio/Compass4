@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.cfs.avaliacao4.entity.enums.Ideology;
@@ -21,7 +22,9 @@ public class PoliticalPartyFormDTO {
 	@NotBlank(message = "Campo Obrigatório")
 	private String acronym;
 	@Enumerated(EnumType.STRING)
+	@NotNull
 	private Ideology ideology;
+	@NotNull
 	private LocalDate fundationDate;
 	
 
